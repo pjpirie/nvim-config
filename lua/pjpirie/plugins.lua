@@ -40,62 +40,110 @@ packer.init {
 }
 
 -- Install your plugins here
-return require('packer').startup({ function(use) 
+return require('packer').startup({ function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Autopairs, integrates with both cmp and treesitter
-  
-  -- Colorschemes
-  use "gruvbox-community/gruvbox"
-  
-   -- cmp plugins
-   use "hrsh7th/nvim-cmp" -- The completion plugin
-   use "hrsh7th/cmp-buffer" -- buffer completions
-   use "hrsh7th/cmp-path" -- path completions
-   use "hrsh7th/cmp-cmdline" -- cmdline completions
-   use "saadparwaiz1/cmp_luasnip" -- snippet completions
-   use "hrsh7th/cmp-nvim-lsp"
-   use "hrsh7th/cmp-nvim-lua"
-   use 'kyazdani42/nvim-web-devicons'
-   use 'kyazdani42/nvim-tree.lua'
-   use "akinsho/bufferline.nvim"
-   use "moll/vim-bbye"
-   use 'nvim-lualine/lualine.nvim'
-   use "akinsho/toggleterm.nvim"
- 
-   -- snippets
-   use "L3MON4D3/LuaSnip" --snippet engine
-   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
- 
-   -- LSP
-   use "neovim/nvim-lspconfig" -- enable LSP
-   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "preservim/tagbar"
+  use { 'glepnir/dashboard-nvim' }
 
-   -- Telescope
+  -- Colorschemes
+  use 'folke/lsp-colors.nvim'
+  use "gruvbox-community/gruvbox"
+
+  -- cmp plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lua"
+  use 'kyazdani42/nvim-web-devicons'
+  use 'kyazdani42/nvim-tree.lua'
+  use "akinsho/bufferline.nvim"
+  use "moll/vim-bbye"
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+  use "akinsho/toggleterm.nvim"
+
+  -- use 'SirVer/ultisnips'
+  use 'mlaursen/vim-react-snippets'
+
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  -- LSP
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        mode = "workspace_diagnostics"
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  -- Telescope
   use "nvim-telescope/telescope.nvim"
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'BurntSushi/ripgrep'
 
   -- Treesitter
-  use {'nvim-treesitter/nvim-treesitter', run='TSUpdate'}
+  use { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' }
   use 'p00f/nvim-ts-rainbow'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  use({
+    'ray-x/navigator.lua',
+    requires = {
+      { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+      { 'neovim/nvim-lspconfig' },
+    },
+  })
 
   -- Git
   use "lewis6991/gitsigns.nvim"
 
+  -- Testing
+  use 'David-Kunz/jester'
+
+  -- PackageJSON
+  use({
+    "vuki656/package-info.nvim",
+    requires = "MunifTanjim/nui.nvim",
+  })
+
+  -- Montion
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
-    end,
-    config = {
-        compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
-    }
+end,
+  config = {
+    compile_path = vim.fn.stdpath('config') .. '/lua/packer_compiled.lua'
+  }
 
 })
