@@ -5,11 +5,12 @@ end
 
 configs.setup {
   ensure_installed = 'all',
+  auto_install = true,
   sync_install = false,
-  ignore_install = {''},
+  ignore_install = { '' },
   autopairs = {
-		enable = true,
-	},
+    enable = true,
+  },
   highlight = {
     enable = true,
     disable = { '' },
@@ -18,11 +19,11 @@ configs.setup {
   indent = { enable = true, disable = { 'yaml' } },
   rainbow = {
     enable = true,
-    disable = {''},
+    disable = { '' },
     max_file_lines = nil,
   },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
   }
-} 
+}

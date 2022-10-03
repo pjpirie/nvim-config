@@ -24,6 +24,11 @@ db.custom_center = {
     action = 'Telescope find_files find_command=rg,--hidden,--files',
     shortcut = 'SPC f f' },
 
+
+  { icon = '  ',
+    desc = 'Deploy Script                           ',
+    action = 'e ~/Projects/Code/sbafs/sb-scripts/application_versioning',
+    shortcut = 'None   ' },
   { icon = '  ',
     desc = 'Web Repo                                ',
     action = 'e ~/Projects/Code/sbafs/Web',

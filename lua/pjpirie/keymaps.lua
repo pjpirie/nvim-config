@@ -87,6 +87,7 @@ keymap('n', '<leader><leader>tr', ':lua require"jester".run_last()<CR>', opts)
 keymap('n', '<leader><S>tf', ':lua require"jester".run_file()<CR>', opts)
 
 keymap("n", "<leader>ns", ":lua require('package-info').show()<cr>", opts)
+keymap("n", "<leader>sv", ":source ~/.config/nvim/init.lua <cr>", opts)
 
 
 
