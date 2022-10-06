@@ -107,17 +107,18 @@ cmp.setup {
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
+        vim_react_snippets = "[R.Snip]"
       })[entry.source.name]
       return vim_item
     end,
   },
   sources = {
     { name = "nvim_lsp" },
-    { name = "vim-react-snippets" },
-    { name = "nvim_lua" },
-    { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = "nvim_lua" },
+    { name = "luasnip" },
+    { name = "vim-react-snippets" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
