@@ -20,4 +20,5 @@ require 'pjpirie.lualine'
 require 'pjpirie.jester'
 require 'pjpirie.packagejson'
 require 'pjpirie.hop'
+require 'pjpirie.lightbulb'
 
