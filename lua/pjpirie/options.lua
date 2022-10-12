@@ -9,7 +9,7 @@ o.fileencoding = "utf-8"
 o.hlsearch = true
 o.ignorecase = true
 o.mouse = "a"
-o.pumheight = 10 
+o.pumheight = 10
 o.showmode = false
 o.showtabline = 2
 o.smartcase = true
@@ -20,17 +20,18 @@ o.swapfile = false
 o.timeoutlen = 1000
 o.undofile = true
 o.updatetime = 300
-o.writebackup = false 
-o.expandtab = true 
+o.writebackup = false
+o.expandtab = true
 o.shiftwidth = 2
 o.tabstop = 2
-o.cursorline = true 
+o.cursorline = true
 o.number = true
 o.relativenumber = true
 o.numberwidth = 4
 o.signcolumn = "yes"
 o.wrap = false
 o.guifont = "monospace:h17"
+o.termguicolors = true
 
 o.shortmess:append "c"
 

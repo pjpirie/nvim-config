@@ -50,6 +50,12 @@ return require('packer').startup({ function(use)
   use "preservim/tagbar"
   use { 'glepnir/dashboard-nvim' }
 
+  use {
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  }
+
+
   -- Colorschemes
   use 'folke/lsp-colors.nvim'
   use "gruvbox-community/gruvbox"
@@ -64,7 +70,7 @@ return require('packer').startup({ function(use)
   use "hrsh7th/cmp-nvim-lua"
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
-  use "akinsho/bufferline.nvim"
+  use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
   use "moll/vim-bbye"
   use {
     'nvim-lualine/lualine.nvim',
@@ -95,11 +101,23 @@ return require('packer').startup({ function(use)
       }
     end
   }
-
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'BurntSushi/ripgrep'
+  use "smartpde/telescope-recent-files"
+
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      -- you'll need at least one of these
+      { 'nvim-telescope/telescope.nvim' },
+      -- {'ibhagwan/fzf-lua'},
+    },
+    config = function()
+      require('neoclip').setup()
+    end,
+  }
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' }
@@ -135,34 +153,38 @@ return require('packer').startup({ function(use)
       require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   }
-
   -- Hover
   use {
     "lewis6991/hover.nvim",
     config = function()
-        require("hover").setup {
-            init = function()
-                -- Require providers
-                require("hover.providers.lsp")
-                -- require('hover.providers.gh')
-                -- require('hover.providers.jira')
-                -- require('hover.providers.man')
-                -- require('hover.providers.dictionary')
-            end,
-            preview_opts = {
-                border = nil
-            },
-            -- Whether the contents of a currently open hoindow should be moved
-            -- to a :h preview-window when pressing the hover keymap.
-            preview_window = false,
-            title = true
-        }
+      require("hover").setup {
+        init = function()
+          -- Require providers
+          require("hover.providers.lsp")
+          -- require('hover.providers.gh')
+          -- require('hover.providers.jira')
+          -- require('hover.providers.man')
+          -- require('hover.providers.dictionary')
+        end,
+        preview_opts = {
+          border = nil
+        },
+        -- Whether the contents of a currently open hoindow should be moved
+        -- to a :h preview-window when pressing the hover keymap.
+        preview_window = false,
+        title = true
+      }
 
-        -- Setup keymaps
-        vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
-        vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
+      -- Setup keymaps
+      vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+      vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
     end
-}
+  }
+  use 'antoinemadec/FixCursorHold.nvim'
+  use {
+    'kosayoda/nvim-lightbulb',
+    requires = 'antoinemadec/FixCursorHold.nvim',
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

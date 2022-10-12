@@ -88,12 +88,15 @@ keymap('n', '<leader><S>tf', ':lua require"jester".run_file()<CR>', opts)
 
 keymap("n", "<leader>ns", ":lua require('package-info').show()<cr>", opts)
 keymap("n", "<leader>sv", ":source ~/.config/nvim/init.lua <cr>", opts)
+keymap("n", "<leader>s", ":CodeActionMenu<CR>", opts)
+keymap("n", "<leader>w", ":w<CR>", opts)
 
-
+-- keymap("n", "<leader><leader>r", ]]
+--   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]], opts)
 
 -- place this in one of your configuration file(s)
 keymap('n', 'f',
-  ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>"
+  ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirectifn.AFTER_CURSOR, current_line_only = false })<cr>"
   , {})
 keymap('n', 'F',
   ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>"
