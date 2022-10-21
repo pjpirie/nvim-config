@@ -50,10 +50,10 @@ return require('packer').startup({ function(use)
   use "preservim/tagbar"
   use { 'glepnir/dashboard-nvim' }
 
-  use {
+  use({
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
-  }
+  })
 
 
   -- Colorschemes
@@ -142,6 +142,22 @@ return require('packer').startup({ function(use)
   use({
     "vuki656/package-info.nvim",
     requires = "MunifTanjim/nui.nvim",
+  })
+  use { 'stevearc/dressing.nvim' }
+  use({
+    "gbprod/phpactor.nvim",
+    run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
+    requires = {
+      "nvim-lua/plenary.nvim", -- required to update phpactor
+      "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
+    },
+    config = function()
+      require("phpactor").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end
   })
 
   -- Montion
