@@ -11,10 +11,10 @@ configs.setup {
   autopairs = {
     enable = true,
   },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlightin = true,
-  },
+  --[[ highlight = { ]]
+  --[[   enable = true, ]]
+  --[[   additional_vim_regex_highlightin = true, ]]
+  --[[ }, ]]
   indent = { enable = true, disable = { 'yaml' } },
   rainbow = {
     enable = true,
