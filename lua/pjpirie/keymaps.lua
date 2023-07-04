@@ -19,6 +19,17 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+keymap("n", "<leader>ca", "<cmd>CodeActionMenu<CR>", opts)
+keymap("n", "<leader>k",
+  "<cmd>lua require'telescope.builtin'.lsp_type_definitions(require('telescope.themes').get_dropdown({ previewer = true }))<cr>"
+  ,
+  opts)
+keymap("n", "<leader>tw",
+  "<cmd>lua require('neotest').run.run({ jestCommand = 'yarn test --watch'})<cr>", opts)
+keymap("n", "<leader>to", "<cmd>lua require('neotest').output.open({enter = false, short = true})<cr>", opts)
+keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run({ jestCommand = 'yarn test'})<cr>", opts)
+keymap("n", "<leader>t<leader>", "<cmd>lua require('neotest').summary.toggle()<cr>", opts)
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -73,10 +84,19 @@ keymap("n", "<leader>p",
 keymap("n", "<leader>P",
   "<cmd>lua require'telescope.builtin'.oldfiles(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
   opts)
+keymap("n", "gd",
+  "<cmd>lua require'telescope.builtin'.lsp_definitions(require('telescope.themes').get_dropdown({ previewer = false }))<cr>"
+  ,
+  opts)
+keymap("n", "gr",
+  "<cmd>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_dropdown({ previewer = true }))<cr>"
+  ,
+  opts)
 keymap("n", "<leader>0",
   "<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
   opts)
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+keymap('n', '<c-f>', ':lua require("telescope").extensions.lines.lines()<CR>', opts)
 
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
@@ -88,9 +108,9 @@ keymap('n', '<leader>d[', ':lua vim.diagnostic.goto_prev()<CR>', opts)
 keymap('n', '<leader>d]', ':lua vim.diagnostic.goto_next()<CR>', opts)
 keymap('n', '<leader>dd', ':Telescope diagnostics<CR>', opts)
 
-keymap('n', '<leader><leader>t', ':lua require"jester".run()<CR>', opts)
-keymap('n', '<leader><leader>tr', ':lua require"jester".run_last()<CR>', opts)
 keymap('n', '<leader><S>tf', ':lua require"jester".run_file()<CR>', opts)
+keymap("v", "<leader>gh", ":DiffCommitLine<CR>", opts)
+
 
 keymap("n", "<leader>ns", ":lua require('package-info').show()<cr>", opts)
 keymap("n", "<leader>sv", ":source ~/.config/nvim/init.lua <cr>", opts)
@@ -101,15 +121,15 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 --   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]], opts)
 
 -- place this in one of your configuration file(s)
-keymap('n', 'f',
-  ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirectifn.AFTER_CURSOR, current_line_only = false })<cr>"
-  , {})
-keymap('n', 'F',
-  ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>"
-  , {})
-keymap('n', 't',
-  ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false, hint_offset = -1 })<cr>"
-  , {})
-keymap('n', 'T',
-  ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false , hint_offset = 1 })<cr>"
-  , {})
+--[[ keymap('n', 'f', ]]
+--[[   ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirectifn.AFTER_CURSOR, current_line_only = false })<cr>" ]]
+--[[   , {}) ]]
+--[[ keymap('n', 'F', ]]
+--[[   ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>" ]]
+--[[   , {}) ]]
+--[[ keymap('n', 't', ]]
+--[[   ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false, hint_offset = -1 })<cr>" ]]
+--[[   , {}) ]]
+--[[ keymap('n', 'T', ]]
+--[[   ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false , hint_offset = 1 })<cr>" ]]
+--[[   , {}) ]]

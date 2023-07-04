@@ -37,3 +37,7 @@ o.shortmess:append "c"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
+vim.cmd "set nocompatible"
+vim.cmd "filetype plugin on"
+vim.cmd "syntax on"
+

@@ -89,6 +89,10 @@ telescope.setup {
     -- builtin picker
   },
   extensions = {
+    lines = {
+      hide_empty_lines = true,
+      trim_lines = true,
+    },
     media_files = {
         -- filetypes whitelist
         -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
@@ -102,3 +106,6 @@ telescope.setup {
     -- please take a look at the readme of the extension you want to configure
   },
 }
+-- `load_extension` must be called after `telescope.setup`
+telescope.load_extension("media_files")
+telescope.load_extension("lines")
