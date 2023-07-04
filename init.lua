@@ -8,7 +8,6 @@ require 'pjpirie.lsp'
 require 'pjpirie.telescope'
 require 'pjpirie.treesitter'
 require 'pjpirie.db'
---[[ require 'pjpirie.chatGPT' ]]
 require 'pjpirie.autopairs'
 require 'pjpirie.comment'
 require 'pjpirie.gitsigns'
@@ -19,6 +18,7 @@ require 'pjpirie.lsp.null-ls'
 require 'pjpirie.lualine'
 require 'pjpirie.packagejson'
 require 'pjpirie.lightbulb'
+--[[ require 'pjpirie.chatGPT' ]]
 --[[ require 'pjpirie.hop' ]]
 --[[ require 'pjpirie.neotest' ]]
 --[[ require 'pjpirie.jester' ]]

@@ -125,6 +125,7 @@ return require('packer').startup({
     -- Telescope
     use "nvim-telescope/telescope.nvim"
     use 'nvim-telescope/telescope-media-files.nvim'
+    use "LinArcX/telescope-env.nvim"
     use "tpope/vim-fugitive"
     use 'BurntSushi/ripgrep'
     use "smartpde/telescope-recent-files"
